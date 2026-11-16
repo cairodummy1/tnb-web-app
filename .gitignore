@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.py[cod]
+data/uploads/*
+!data/uploads/.gitkeep
+data/tabular/datasets/*
+data/tabular/models/*
+data/coco/
+data/viewer/
+.tmp/

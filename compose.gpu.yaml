@@ -1,0 +1,24 @@
+# Opt-in NVIDIA GPU worker. Requires NVIDIA Container Toolkit on the Docker host.
+services:
+  worker:
+    image: simple-inference-worker-gpu
+    build:
+      args:
+        # PyTorch 2.7 + CUDA 12.8 includes Blackwell (sm_120) support.
+        PYTORCH_WHEEL_CHANNEL: cu128
+        TORCH_VERSION: 2.7.1
+        TORCHVISION_VERSION: 0.22.1
+    environment:
+      INFERENCE_DEVICE: cuda
+    gpus: all
+
+  training-worker:
+    image: simple-inference-worker-gpu
+    build:
+      args:
+        PYTORCH_WHEEL_CHANNEL: cu128
+        TORCH_VERSION: 2.7.1
+        TORCHVISION_VERSION: 0.22.1
+    environment:
+      INFERENCE_DEVICE: cuda
+    gpus: all
